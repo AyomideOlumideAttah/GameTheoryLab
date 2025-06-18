@@ -1,0 +1,26 @@
+
+*.pyc
+__pycache__/
+
+.Python
+build/
+dist/
+*.egg-info/
+.eggs/
+wheels/
+*.whl
+
+.venv/
+venv/
+env/
+
+.vscode/        # VS Code
+.idea/          # IntelliJ/PyCharm
+*.sublime-project
+*.sublime-workspace
+.DS_Store       # macOS
+
+.ipynb_checkpoints # Jupyter notebooks
+
+*.log
+*.sqlite3
