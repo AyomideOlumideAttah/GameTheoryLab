@@ -1,6 +1,6 @@
 # GameTheoryLab: Interactive Game Theory Simulation
 
-GameTheoryLab is a Python-based simulation library that brings game theory principles and concepts to life. Through its user-friendly interface and robust functionality, users can directly engage with underlying Game Theory concepts by interacting with various cooperative/competitive games.
+**GameTheoryLab** is a Python-based simulation library that brings game theory principles and concepts to life. Through its user-friendly interface and robust functionality, users can directly engage with underlying Game Theory concepts by interacting with various cooperative/competitive games.
 
 The inaugural version of this library includes interfaces for exploring the Iterated Prisoner's Dilemma (IPD), an iterative version of the popular Prisoner's Dilemma game. Users can play with other strategies, simulate matches, replicate tournaments, and create their own strategies! 
 
