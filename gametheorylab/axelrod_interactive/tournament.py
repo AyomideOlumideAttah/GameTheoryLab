@@ -1,6 +1,6 @@
-from GameTheoryLab.axelrod_interactive.result import Result
-from GameTheoryLab.axelrod_interactive.strategy import Strategy
-from GameTheoryLab.axelrod_interactive.arena import Arena
+from gametheorylab.axelrod_interactive.result import Result
+from gametheorylab.axelrod_interactive.strategy import Strategy
+from gametheorylab.axelrod_interactive.arena import Arena
 
 class Tournament:
     def __init__(self, strategies: list[Strategy], mode: str="round robin", num_repeats: int=5, num_rounds: int=200):

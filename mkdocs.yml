@@ -1,0 +1,42 @@
+site_name: GameTheoryLab
+site_description: A Python-based simulation library that enables users to directly engage with Game Theory principles through several cooperation/competition games.
+site_author: Ayomide Olumide-Attah
+site_url: https://AyomideOlumideAttah.github.io/gametheorylab
+
+theme:
+  name: material
+  palette:
+    scheme: default
+    primary: blue
+    accent: blue
+  font:
+    text: Roboto
+    code: Roboto Mono
+  features:
+    - navigation.instant
+    - navigation.sections
+    - navigation.expand
+
+repo_name: AyomideOlumideAttah/gametheorylab
+repo_url: https://github.com/AyomideOlumideAttah/gametheorylab
+edit_uri: edit/main/docs/
+
+nav:
+  - Home: index.md
+  - AxelrodInteractive:
+    - Overview: axelrod-interactive/index.md
+    - Usage: axelrod-interactive/usage.md
+
+markdown_extensions:
+  - admonition
+  - codehilite
+  - toc:
+      permalink: true
+  - footnotes
+  - def_list
+  - pymdownx.superfences
+  - pymdownx.highlight
+  - pymdownx.tabbed
+
+plugins:
+  - search

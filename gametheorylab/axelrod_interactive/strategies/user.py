@@ -1,4 +1,4 @@
-from GameTheoryLab.axelrod_interactive.strategy import Strategy
+from gametheorylab.axelrod_interactive.strategy import Strategy
 
 class User(Strategy):
     """Class that implements the User strategy - an interface through which the user can play the game!"""

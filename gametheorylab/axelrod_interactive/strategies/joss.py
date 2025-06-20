@@ -1,5 +1,5 @@
 import random
-from GameTheoryLab.axelrod_interactive.strategy import Strategy
+from gametheorylab.axelrod_interactive.strategy import Strategy
 
 class Joss(Strategy):
     """Class that implements the Joss strategy. See provided documentation for details.

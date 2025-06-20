@@ -1,5 +1,5 @@
 import random
-from GameTheoryLab.axelrod_interactive.strategy import Strategy
+from gametheorylab.axelrod_interactive.strategy import Strategy
 
 class AdaptiveGTFT(Strategy):
     """Class that implements the Adaptive GTFT (Generous Tit for Tat) strategy. See provided documentation for details.

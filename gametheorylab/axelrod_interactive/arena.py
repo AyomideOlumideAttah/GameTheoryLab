@@ -1,6 +1,6 @@
-from GameTheoryLab.axelrod_interactive.strategy import Strategy
-from GameTheoryLab.axelrod_interactive import get_payoffs
-from GameTheoryLab.axelrod_interactive.result import Result
+from gametheorylab.axelrod_interactive.strategy import Strategy
+from gametheorylab.axelrod_interactive import get_payoffs
+from gametheorylab.axelrod_interactive.result import Result
 
 class Arena:
     payoffs = get_payoffs()

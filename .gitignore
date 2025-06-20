@@ -24,3 +24,7 @@ env/
 
 *.log
 *.sqlite3
+
+site/
+
+gametheorylab/auctiongt

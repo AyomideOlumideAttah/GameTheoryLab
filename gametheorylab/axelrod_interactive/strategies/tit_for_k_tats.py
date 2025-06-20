@@ -1,4 +1,4 @@
-from GameTheoryLab.axelrod_interactive.strategy import Strategy
+from gametheorylab.axelrod_interactive.strategy import Strategy
 
 class TitForKTats(Strategy):
     """Class that implements the Tit for 'K' Tats strategy. See the provided documentation for details.

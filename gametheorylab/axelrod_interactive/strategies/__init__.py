@@ -2,7 +2,7 @@ import os
 import importlib
 import inspect
 import pkgutil
-from GameTheoryLab.axelrod_interactive.strategy import Strategy
+from gametheorylab.axelrod_interactive.strategy import Strategy
 
 STRATEGIES = {}
 

@@ -2,7 +2,7 @@ import random
 
 from Cython.Build.Dependencies import default_create_extension
 
-from GameTheoryLab.axelrod_interactive.strategy import Strategy
+from gametheorylab.axelrod_interactive.strategy import Strategy
 
 class GrimAttacker(Strategy):
     """Class that implements the Grim Attacker strategy. See the provided documentation for details.

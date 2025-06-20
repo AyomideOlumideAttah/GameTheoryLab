@@ -1,4 +1,4 @@
-from GameTheoryLab.axelrod_interactive.strategy import Strategy
+from gametheorylab.axelrod_interactive.strategy import Strategy
 
 class Pavlov(Strategy):
     """Class that implements the Pavlov strategy. See the provided documentation for details."""

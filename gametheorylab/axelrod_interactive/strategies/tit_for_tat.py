@@ -1,4 +1,4 @@
-from GameTheoryLab.axelrod_interactive.strategy import Strategy
+from gametheorylab.axelrod_interactive.strategy import Strategy
 
 class TitForTat(Strategy):
     """Class that implements the Tit for Tat strategy."""

@@ -1,5 +1,5 @@
 import random
-from GameTheoryLab.axelrod_interactive.strategy import Strategy
+from gametheorylab.axelrod_interactive.strategy import Strategy
 
 class GenerousTitForTat(Strategy):
     """Class that implements the Generous Tit for Tat strategy. See the provided documentation for details.

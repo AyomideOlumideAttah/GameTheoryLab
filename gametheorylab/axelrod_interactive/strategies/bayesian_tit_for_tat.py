@@ -1,5 +1,5 @@
-from GameTheoryLab.axelrod_interactive import get_payoffs
-from GameTheoryLab.axelrod_interactive.strategy import Strategy
+from gametheorylab.axelrod_interactive import get_payoffs
+from gametheorylab.axelrod_interactive.strategy import Strategy
 import random
 
 class BayesianTitForTat(Strategy):

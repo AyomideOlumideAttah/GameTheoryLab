@@ -1,4 +1,4 @@
-from GameTheoryLab.axelrod_interactive.strategy import Strategy
+from gametheorylab.axelrod_interactive.strategy import Strategy
 
 class AlwaysDefect(Strategy):
     """Class that implements the Always Defect strategy."""

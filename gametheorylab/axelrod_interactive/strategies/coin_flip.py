@@ -1,5 +1,5 @@
 import random
-from GameTheoryLab.axelrod_interactive.strategy import Strategy
+from gametheorylab.axelrod_interactive.strategy import Strategy
 
 class CoinFlip(Strategy):
     """Class that implements the 'coin flip' (aka random) strategy.

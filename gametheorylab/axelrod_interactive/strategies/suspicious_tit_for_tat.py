@@ -1,4 +1,4 @@
-from GameTheoryLab.axelrod_interactive.strategy import Strategy
+from gametheorylab.axelrod_interactive.strategy import Strategy
 
 class SuspiciousTitForTat(Strategy):
     """Class that implements the Suspicious Tit for Tat strategy. See the provided documentation for details."""
