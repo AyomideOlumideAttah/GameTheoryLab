@@ -7,6 +7,7 @@ The initial release focuses on the **Iterated Prisoner's Dilemma (IPD)**, enabli
 ---
 
 ## ✨ Features
+The ```axelrod_interactive``` subpackage houses the functionality for simulating and interacting with the IPD. The subpackage boasts of the following features:
 
 - **Extensive Strategy Library**: Includes 20 distinct IPD strategies—ranging from deterministic to stochastic, nice to nasty, forgiving to punitive, and simple to sophisticated.
 
@@ -26,7 +27,7 @@ GameTheoryLab is easy to set up on your local machine. All you need to do is:
 
 Then, import it into your project using:
 
-```import GameTheoryLab```
+```import gametheorylab```
 
 And you're all set!
 
@@ -34,7 +35,7 @@ And you're all set!
 
 ## 🚀 Usage
 
-Below is a simple demo utilizing GameTheoryLab to explore the IPD, with the help of the ``axelrod_interactive`` library:
+Below is a simple demo illustrating how to use GameTheoryLab to explore the IPD, with the help of the ``axelrod_interactive`` subpackage:
 
 ```
 # Demonstrating using the User class to play against strategies and saving the results
@@ -45,6 +46,7 @@ from gametheorylab.axelrod_interactive.strategies import STRATEGIES
 from gametheorylab.axelrod_interactive.arena import Arena
 from random import choice, sample
 
+# Code that sets the payoff matrix for the session. Include at the top of your script for best practices
 axl.set_payoffs()
 
 user = User("Player1")
@@ -52,7 +54,7 @@ player = choice(list(STRATEGIES.values()))()
 print(player.name + ":", player.__doc__) # Information about the strategy
 
 arena = Arena(user, player, num_rounds=20, show_results=True)
-result = arena.play_round() # Returns a Result object!
+result = arena.play_round()
 result.to_csv(f"user_vs_{player.__class__.__name__}") # Saving the result to a .csv file for further analysis
 
 # Demonstrating simulating a round-robin tournament and saving the results
@@ -60,12 +62,10 @@ from gametheorylab.axelrod_interactive.tournament import Tournament
 
 players = [s() for s in sample(list(STRATEGIES.values()), k=15)]
 tournament = Tournament(players, num_repeats=5, num_rounds=250)
-result = tournament.play(show_results=True)
+result = tournament.play(show_results=True) # Tournament results are displayed in the console
 result.to_csv("tournament_results.csv")
 
 ```
-
-
 
 ---
 
@@ -85,7 +85,7 @@ Contributions are welcome! Please follow the steps to contribute:
 
 **Ayomide Olumide-Attah**
 
-Math & CS double major at Fisk University
+Math & CS Double Major at Fisk University
 
 ---
 
