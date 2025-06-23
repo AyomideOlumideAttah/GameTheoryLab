@@ -3,6 +3,14 @@ from gametheorylab.axelrod_interactive import get_payoffs
 from gametheorylab.axelrod_interactive.result import Result
 
 class Arena:
+    """Class that simulates a head-to-head match between two strategies.
+
+    Args:
+        s1 (Strategy): One of the strategies playing the match.
+        s2 (Strategy): The other strategies playing the match.
+        num_rounds (int): The number of rounds in the match. Defaults to 10.
+        show_results: Flag that determines whether the results of the match should be printed onto the console. Defaults to False.
+    """
     payoffs = get_payoffs()
     def __init__(self, s1: Strategy, s2: Strategy, num_rounds: int=10, show_results: bool=True):
         # Validation

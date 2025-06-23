@@ -1,7 +1,4 @@
 import random
-
-from Cython.Build.Dependencies import default_create_extension
-
 from gametheorylab.axelrod_interactive.strategy import Strategy
 
 class GrimAttacker(Strategy):
