@@ -46,6 +46,6 @@ class AdaptiveGTFT(Strategy):
 
     def move(self, opp_history, self_history, opp_score, self_score):
         if opp_history and not opp_history[-1]:
-            return random.random() >= self.prob_of_cooperation
+            return random.random() <= self.prob_of_cooperation
         return True
 

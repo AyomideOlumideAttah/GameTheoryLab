@@ -85,7 +85,7 @@ Contributions are welcome! Please follow the steps to contribute:
 
 **Ayomide Olumide-Attah**
 
-Math & CS Double Major at Fisk University
+Math & CS Joint Major at Fisk University
 
 ---
 

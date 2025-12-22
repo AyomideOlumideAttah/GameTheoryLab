@@ -3,7 +3,7 @@ from gametheorylab.axelrod_interactive.strategy import Strategy
 from gametheorylab.axelrod_interactive.arena import Arena
 
 class Tournament:
-    def __init__(self, strategies: list[Strategy], mode: str="round robin", num_repeats: int=5, num_rounds: int=200):
+    def __init__(self, strategies: list[Strategy], mode: str="round robin", num_repeats: int=5, num_rounds: int=200, noise: float=0):
         """Simulates a tournament with the given strategies.
 
            Args:
@@ -11,10 +11,11 @@ class Tournament:
               mode (str): the mode of tournament to play. Currently supports three modes: 'round robin', 'four ways' and 'round of 16'. If 'round robin' is chosen, any number of strategies can be passed in. If 'four ways' is chosen, the number of strategies passed in must be exactly 4. If 'round of 16' is chosen, the number of strategies must be exactly 16. The default mode is 'round robin'.
               num_repeats (int): Number of times a single tournament is repeated. Defaults to 5.
               num_rounds (int): Number of rounds per match between any two strategies. Defaults to 200.
+              noise (float): The level of noise in the tournament (the chance that an intended choice is flipped). Note that noise must be in (0, 1). Defaults to 0.
            """
         # Validation
         if len(strategies) < 3:
-            raise ValueError(f"Strategies list is too small! ({len(strategies)} < 3)")
+            raise ValueError(f"Number of strategies is too small! ({len(strategies)} < 3)")
         if mode not in {"round of 16", "round robin", "four ways"}:
             raise ValueError(f"Mode {mode} either doesn't exist or is not supported.")
         if mode == "four ways" and len(strategies) != 4:
@@ -25,6 +26,12 @@ class Tournament:
             raise ValueError(f"Parameter 'num_rounds' must be an integer! (You entered {num_rounds}.)")
         if not isinstance(num_repeats, int):
             raise ValueError(f"Parameter 'num_repeats' must be an integer! (You entered {num_repeats}.)")
+        if not (0 <= noise < 1):
+            if noise < 0:
+                string = f"({noise} < 0)"
+            else:
+                string = f"({noise} >= 1)"
+            raise ValueError("Parameter 'noise' is out of range! " + string)
 
         self.base_strategies = strategies
         self.strategies = strategies
@@ -38,6 +45,7 @@ class Tournament:
 
         self.base_num_rounds = num_rounds
         self.num_rounds = self.base_num_rounds
+        self.noise = noise
 
     def __reset(self):
         self.strategies = self.base_strategies
@@ -59,6 +67,7 @@ class Tournament:
         print("Players:")
         for i in range(len(self.strategies)):
             print(f"{i + 1}:", self.strategies[i].name)
+        print()
 
     def __play_round_robin(self, show_results=True):
         for _ in range(self.num_repeats):
@@ -66,8 +75,8 @@ class Tournament:
                 for j in range(i, self.num_players):
                     player1 = self.strategies[i]
                     player2 = self.strategies[j]
-                    arena = Arena(player1, player2, num_rounds=self.num_rounds, show_results=False)
-                    result_dict = arena.play_round().data
+                    arena = Arena(player1, player2, num_rounds=self.num_rounds)
+                    result_dict = arena.play_round(noise=self.noise, show_results=False).data
                     p1_score, p2_score = result_dict[player1.name][-1], result_dict[player2.name][-1]
                     self.round_robin_results[player1.name] = self.round_robin_results.get(player1.name, 0) + p1_score
                     self.round_robin_results[player2.name] = self.round_robin_results.get(player2.name, 0) + p2_score
@@ -108,8 +117,8 @@ class Tournament:
             for j in range(i + 1, 4):
                 player1 = self.strategies[i]
                 player2 = self.strategies[j]
-                arena = Arena(player1, player2, num_rounds=self.num_rounds, show_results=False)
-                result_dict = arena.play_round().data
+                arena = Arena(player1, player2, num_rounds=self.num_rounds)
+                result_dict = arena.play_round(noise=self.noise, show_results=show_results).data
                 p1_score, p2_score = result_dict[player1.name][-1], result_dict[player2.name][-1]
                 self.round_robin_results[player1.name] = self.round_robin_results.get(player1.name, 0) + p1_score
                 self.round_robin_results[player2.name] = self.round_robin_results.get(player2.name, 0) + p2_score
@@ -120,8 +129,8 @@ class Tournament:
         if show_results:
             print("----------------------------------FINALS---------------------------------------")
         finalist1, finalist2 = self.strategies[:2]
-        finals = Arena(finalist1, finalist2, num_rounds=self.num_rounds, show_results=show_results)
-        result_dict = finals.play_round().data
+        finals = Arena(finalist1, finalist2, num_rounds=self.num_rounds)
+        result_dict = finals.play_round(noise=self.noise, show_results=show_results).data
         f1_score, f2_score = result_dict[finalist1.name][-1], result_dict[finalist2.name][-1]
         if f1_score > f2_score:
             print(f"The winner is: {finalist1.name}!")
@@ -144,8 +153,8 @@ class Tournament:
             for j in range(i + 1, 16):
                 player1 = self.strategies[i]
                 player2 = self.strategies[j]
-                arena = Arena(player1, player2, num_rounds=self.num_rounds, show_results=False)
-                result_dict = arena.play_round().data
+                arena = Arena(player1, player2, num_rounds=self.num_rounds)
+                result_dict = arena.play_round(noise=self.noise, show_results=False).data
                 p1_score, p2_score = result_dict[player1.name][-1], result_dict[player2.name][-1]
                 self.round_robin_results[player1.name] = self.round_robin_results.get(player1.name, 0) + p1_score
                 self.round_robin_results[player2.name] = self.round_robin_results.get(player2.name, 0) + p2_score
@@ -164,8 +173,8 @@ class Tournament:
             for j in range(i + 1, 8):
                 player1 = self.strategies[i]
                 player2 = self.strategies[j]
-                arena = Arena(player1, player2, num_rounds=self.num_rounds, show_results=False)
-                result_dict = arena.play_round().data
+                arena = Arena(player1, player2, num_rounds=self.num_rounds)
+                result_dict = arena.play_round(noise=self.noise, show_results=False).data
                 p1_score, p2_score = result_dict[player1.name][-1], result_dict[player2.name][-1]
                 self.round_robin_results[player1.name] = self.round_robin_results.get(player1.name, 0) + p1_score
                 self.round_robin_results[player2.name] = self.round_robin_results.get(player2.name, 0) + p2_score
@@ -185,8 +194,8 @@ class Tournament:
             for j in range(i + 1, 4):
                 player1 = self.strategies[i]
                 player2 = self.strategies[j]
-                arena = Arena(player1, player2, num_rounds=self.num_rounds, show_results=False)
-                result_dict = arena.play_round().data
+                arena = Arena(player1, player2, num_rounds=self.num_rounds)
+                result_dict = arena.play_round(noise=self.noise, show_results=False).data
                 p1_score, p2_score = result_dict[player1.name][-1], result_dict[player2.name][-1]
                 self.round_robin_results[player1.name] = self.round_robin_results.get(player1.name, 0) + p1_score
                 self.round_robin_results[player2.name] = self.round_robin_results.get(player2.name, 0) + p2_score
@@ -202,11 +211,11 @@ class Tournament:
 
         # -------------------------------------------------------Finals------------------------------------------
         if show_results:
-            print("----------------------------------FINALS---------------------------------------")
+            print("-" * 20 + "FINALS" + "-" * 20)
 
         finalist1, finalist2 = self.strategies[:2]
-        finals = Arena(finalist1, finalist2, num_rounds=self.num_rounds, show_results=show_results)
-        result_dict = finals.play_round().data
+        finals = Arena(finalist1, finalist2, num_rounds=self.num_rounds)
+        result_dict = finals.play_round(noise=self.noise, show_results=show_results).data
         f1_score, f2_score = result_dict[finalist1.name][-1], result_dict[finalist2.name][-1]
         if f1_score > f2_score:
             print(f"The winner is: {finalist1.name}!")

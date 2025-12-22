@@ -45,12 +45,12 @@ player = CoinFlip(prob_of_cooperation=0.5)
 match = Arena(echo, player, num_rounds=25, show_results=True)
 match.play_round().to_csv(f"custom_strategy_demo2.csv")
 
-# Now let's see how it performs in an R16
+# Now let's see how it performs in an (extremely noisy) R16
 from gametheorylab.axelrod_interactive.strategies import STRATEGIES
 from gametheorylab.axelrod_interactive.tournament import Tournament
 from random import sample
 
 players = [s() for s in sample(list(STRATEGIES.values()), k=15)]
 players.append(echo)
-r16 = Tournament(players, mode='round of 16')
+r16 = Tournament(players, mode='round of 16', noise=0.8)
 r16.play(show_results=True).to_csv("r16_results.csv")
